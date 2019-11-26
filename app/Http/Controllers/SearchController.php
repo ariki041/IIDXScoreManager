@@ -36,8 +36,19 @@ class SearchController extends Controller
             }
         }
 
-        $music = $query->select('title', 'genre', 'artist', 'difficulty')->get();
+        // 検索結果パラメータセット
+        $get_level = $request->input('level') ?: '';
+        $get_version = $request->input('version') ?: '';
+        $get_title = $request->input('title') ?: '';
 
-        return view('search', compact('music', 'level', 'version', 'difficulty'));
+        $pagination_params = array(
+            'level' => $get_level,
+            'version' => $get_version,
+            'title' => $get_title
+        );
+
+        $music = $query->select('title', 'genre', 'artist', 'difficulty')->paginate(30);
+
+        return view('search', compact('music', 'level', 'version', 'difficulty', 'pagination_params'));
     }
 }

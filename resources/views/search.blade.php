@@ -21,7 +21,21 @@
         <button type="button" class="btn">詳細検索</button>
         {{ Form::close() }}
     </div>
+    
+    <div class="mt-4">
+        <div>
+            @if($music->total()==0)
+                <h4>検索結果なし</h4>
+            @else
+                <h5>{{ $music->total() }}件中 {{ ($music->currentPage()-1) * $music->perPage() + 1}}～{{ ($music->currentPage()-1) * $music->perPage() + $music->count() }}件表示</h5>
+            @endif
+        </div>
+        <div>
+            {{ $music->appends($pagination_params)->links() }}
+        </div>
+    </div>
 
+    @if($music->total()!=0)
     <table class="table table-hover">
         <thead>
             <tr>
@@ -44,4 +58,5 @@
             @endforeach
         </tbody>
     </table>
+    @endif
 @endsection
