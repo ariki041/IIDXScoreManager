@@ -20,14 +20,110 @@
     color: #9460a0;
 }
 
-.searchclear {
-    position: absolute;
-    right: 5px;
-    top: 0;
-    bottom: 0;
-    height: 14px;
-    margin: auto;
-    font-size: 14px;
-    cursor: pointer;
-    color: #ccc;
-}
+/* NORMALボタンの色設定 */
+.btn-outline-normal {
+    color: #0074bf;
+    background-color: transparent;
+    background-image: none;
+    border-color: #0074bf;
+  }
+  
+  .btn-outline-normal:hover,
+  .btn-outline-normal:not(:disabled):not(.disabled):active, .btn-outline-normal:not(:disabled):not(.disabled).active,
+  .show > .btn-outline-normal.dropdown-toggle {
+    color: #fff;
+    background-color: #0074bf;
+    border-color: #0074bf;
+  }
+  
+  .btn-outline-normal:focus, .btn-outline-normal.focus,
+  .btn-outline-normal:not(:disabled):not(.disabled):active:focus, .btn-outline-normal:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-outline-normal.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 90, 148, 0.5);
+  }
+  
+  .btn-outline-normal.disabled, .btn-outline-normal:disabled {
+    color: #0074bf;
+    background-color: transparent;
+  }
+
+/* HYPERボタンの色設定 */
+.btn-outline-hyper {
+    color: #d4ba23;
+    background-color: transparent;
+    background-image: none;
+    border-color: #d4ba23;
+  }
+  
+  .btn-outline-hyper:hover,
+  .btn-outline-hyper:not(:disabled):not(.disabled):active, .btn-outline-hyper:not(:disabled):not(.disabled).active,
+  .show > .btn-outline-hyper.dropdown-toggle {
+    color: #fff;
+    background-color: #d4ba23;
+    border-color: #d4ba23;
+  }
+  
+  .btn-outline-hyper:focus, .btn-outline-hyper.focus,
+  .btn-outline-hyper:not(:disabled):not(.disabled):active:focus, .btn-outline-hyper:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-outline-hyper.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(179, 157, 30, 0.5);
+  }
+  
+  .btn-outline-hyper.disabled, .btn-outline-hyper:disabled {
+    color: #d4ba23;
+    background-color: transparent;
+  }
+
+/* ANOTHERボタンの色設定 */
+.btn-outline-another {
+    color: #c93a40;
+    background-color: transparent;
+    background-image: none;
+    border-color: #c93a40;
+  }
+  
+  .btn-outline-another:hover,
+  .btn-outline-another:not(:disabled):not(.disabled):active, .btn-outline-another:not(:disabled):not(.disabled).active,
+  .show > .btn-outline-another.dropdown-toggle {
+    color: #fff;
+    background-color: #c93a40;
+    border-color: #c93a40;
+  }
+  
+  .btn-outline-another:focus, .btn-outline-another.focus,
+  .btn-outline-another:not(:disabled):not(.disabled):active:focus, .btn-outline-another:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-outline-another.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(173, 50, 55, 0.5);
+  }
+  
+  .btn-outline-another.disabled, .btn-outline-another:disabled {
+    color: #c93a40;
+    background-color: transparent;
+  }
+
+  /* LEGGENDARIAボタンの色設定 */
+  .btn-outline-leggendaria {
+    color: #9460a0;
+    background-color: transparent;
+    background-image: none;
+    border-color: #9460a0;
+  }
+  
+  .btn-outline-leggendaria:hover,
+  .btn-outline-leggendaria:not(:disabled):not(.disabled):active, .btn-outline-leggendaria:not(:disabled):not(.disabled).active,
+  .show > .btn-outline-leggendaria.dropdown-toggle {
+    color: #fff;
+    background-color: #9460a0;
+    border-color: #9460a0;
+  }
+  
+  .btn-outline-leggendaria:focus, .btn-outline-leggendaria.focus,
+  .btn-outline-leggendaria:not(:disabled):not(.disabled):active:focus, .btn-outline-leggendaria:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-outline-leggendaria.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(123, 80, 133, 0.5);
+  }
+  
+  .btn-outline-leggendaria.disabled, .btn-outline-leggendaria:disabled {
+    color: #9460a0;
+    background-color: transparent;
+  }

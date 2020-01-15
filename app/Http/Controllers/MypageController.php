@@ -44,11 +44,6 @@ class MypageController extends Controller
         }
 
         $music = $query->get();
-        
-        foreach($music as $key => $value)
-        {
-            //print $value["title"] . "<br>";
-        }
 
         return view('search')->with('music', $music);
     }

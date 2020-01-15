@@ -16,9 +16,24 @@
                 <label for="title">タイトル</label>
                 {{ Form::text('title', Request::input('title'), ['class' => 'form-control']) }}
             </div>
+            <div class="form-group col-md-12">
+                <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-normal {{ Request::input('dif_n')==='on' ? 'active' : '' }}">
+                        {{ Form::checkbox('dif_n', "on", Request::input('dif_n')==='on' ? 'true' : '') }}NORMAL
+                    </label>
+                    <label class="btn btn-outline-hyper {{ Request::input('dif_h')==='on' ? 'active' : '' }}">
+                        {{ Form::checkbox('dif_h', "on", Request::input('dif_h')==='on' ? 'true' : '') }}HYPER
+                    </label>
+                    <label class="btn btn-outline-another {{ Request::input('dif_a')==='on' ? 'active' : '' }}">
+                        {{ Form::checkbox('dif_a', "on", Request::input('dif_a')==='on' ? 'true' : '') }}ANOTHER
+                    </label>
+                    <label class="btn btn-outline-leggendaria {{ Request::input('dif_l')==='on' ? 'active' : '' }}">
+                        {{ Form::checkbox('dif_l', "on", Request::input('dif_l')==='on' ? 'true' : '') }}LEGGENDARIA
+                    </label>
+                </div>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary" >検索</button>
-        <button type="button" class="btn">詳細検索</button>
         {{ Form::close() }}
     </div>
     

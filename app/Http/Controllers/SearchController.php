@@ -27,6 +27,20 @@ class SearchController extends Controller
             }
         }
 
+        // 難易度 WHERE句設定
+        $dif = ['2' => 'dif_n', '3' => 'dif_h', '4' => 'dif_a', '5' => 'dif_l'];
+        $dif_key = [];
+
+        foreach($request->only(['dif_n', 'dif_h', 'dif_a', 'dif_l']) as $key => $value)
+        {
+            if($value == 'on')
+            {
+                $keyIndex = array_search($key, $dif);
+                array_push($dif_key, $keyIndex);
+            }
+        }
+        $query->whereIn('difficulty', $dif_key);
+
         // タイトル WHERE句設定
         foreach($request->only('title') as $key => $value)
         {
@@ -40,11 +54,19 @@ class SearchController extends Controller
         $get_level = $request->input('level') ?: '';
         $get_version = $request->input('version') ?: '';
         $get_title = $request->input('title') ?: '';
+        $get_dif_n = $request->input('dif_n') ? 'on' : '';
+        $get_dif_h = $request->input('dif_h') ? 'on' : '';
+        $get_dif_a = $request->input('dif_a') ? 'on' : '';
+        $get_dif_l = $request->input('dif_l') ? 'on' : '';
 
         $pagination_params = array(
             'level' => $get_level,
             'version' => $get_version,
-            'title' => $get_title
+            'title' => $get_title,
+            'dif_n' => $get_dif_n,
+            'dif_h' => $get_dif_h,
+            'dif_a' => $get_dif_a,
+            'dif_l' => $get_dif_l,
         );
 
         $music = $query->select('title', 'genre', 'artist', 'difficulty')->paginate(30);
