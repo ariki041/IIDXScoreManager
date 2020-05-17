@@ -11,17 +11,22 @@
 |
 */
 
-Route::get('/musics/{id}/details', 'DetailController@index')->name('details.index');
+Route::get('/musics/{id}/details', 'DetailController@index');
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/mypage', 'MypageController@index')->name('mypage.index');
-    Route::get('/search', 'SearchController@index')->name('search.index');
+    Route::get('/mypage', 'MypageController@index');
+    Route::get('/mypage/search', 'MypageController@search');
+    Route::get('/mypage/music/{id}', 'MypageController@music')->name('mypage.music');
+    Route::post('/mypage/csvimport', 'CsvImportController@index');
 });
 
 
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/admin', 'AdminContoroller@index');
+Route::get('/admin/search', 'AdminContoroller@search');
 
 Auth::routes();
 /* E:\Users\Documents\laravel\iidx_scmm\vendor\laravel\framework\src\Illuminate\Routing\Router.php

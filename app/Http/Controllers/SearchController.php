@@ -33,7 +33,7 @@ class SearchController extends Controller
 
         foreach($request->only(['dif_n', 'dif_h', 'dif_a', 'dif_l']) as $key => $value)
         {
-            if($value == 'on')
+            if($value === 'on')
             {
                 $keyIndex = array_search($key, $dif);
                 array_push($dif_key, $keyIndex);
@@ -44,7 +44,7 @@ class SearchController extends Controller
         // タイトル WHERE句設定
         foreach($request->only('title') as $key => $value)
         {
-            if($value!='')
+            if($value !== '')
             {
                 $query->where($key, 'like', '%'.$value.'%');
             }
@@ -71,6 +71,6 @@ class SearchController extends Controller
 
         $music = $query->select('title', 'genre', 'artist', 'difficulty')->paginate(30);
 
-        return view('search', compact('music', 'level', 'version', 'difficulty', 'pagination_params'));
+        return view('mypage/search', compact('music', 'level', 'version', 'difficulty', 'pagination_params'));
     }
 }

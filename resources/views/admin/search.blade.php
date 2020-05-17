@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="border rounded p-3">
-        {{ Form::open(['url' => '/search', 'method' => 'GET']) }}
+        {{ Form::open(['url' => '/admin/search', 'method' => 'GET']) }}
         <div class="form-row">
             <div class="form-group col-md-5">
                 <label for="level">レベル</label>

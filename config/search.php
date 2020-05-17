@@ -54,5 +54,27 @@ return
         '3' => 'HYPER',
         '4' => 'ANOTHER',
         '5' => 'LEGGENDARIA'
+    ),
+
+    'clear_type' => array(
+        '0' => 'NO PLAY',
+        '1' => 'FAILED',
+        '2' => 'EASY CLEAR',
+        '3' => 'CLEAR',
+        '4' => 'HARD CLEAR',
+        '5' => 'EX HARD CLEAR',
+        '6' => 'FULLCOMBO CLEAR'
+    ),
+
+    'dj_level' => array(
+        '0' => '',
+        '1' => 'F',
+        '2' => 'E',
+        '3' => 'D',
+        '4' => 'C',
+        '5' => 'B',
+        '6' => 'A',
+        '7' => 'AA',
+        '8' => 'AAA'
     )
 ];

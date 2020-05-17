@@ -2,25 +2,9 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <div class="border rounded p-3 my-2">
-            <h3 class="border-bottom">PLAYER DATA</h3>
-            <table class="table table-borderless">
-                <thead>
-                    
-                </thead>
-                <tbody>
-                    <tr><td>DJネーム</td><td>aaaa</td></tr>
-                    <tr><td>所属エリア</td><td>bbbb</td></tr>
-                    <tr><td>IIDX ID</td><td>cccc</td></tr>
-                    <tr><td>最終更新日</td><td>dddd</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="col-md-8">
-        <div class="border rounded p-3 my-2">
-            <form action="{{url('/search')}}">
+            <form action="{{url('admin/search')}}">
             <div class="form-row">
                 <div class="form-group col-md-5">
                     <label for="level">レベル</label>
