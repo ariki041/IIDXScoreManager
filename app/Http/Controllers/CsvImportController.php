@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use App\Music;
-use App\MusicList;
 use App\Csvimport;
 
 class CsvImportController extends Controller
@@ -65,17 +66,51 @@ class CsvImportController extends Controller
             $import_data[$key1] = array_merge($user_id + $date, $import_data[$key1]);
         }
 
-        Csvimport::where('user_id', Auth::id())->delete();
-        Csvimport::insert($import_data);
+        DB::statement($this->insertOrUpdate($import_data));
 
         return view('mypage/csvimport');
     }
 
+    //CSVファイルから作成した配列をinsert文に変換
+    private function insertOrUpdate(array $rows)
+    {
+        $table = with(new Csvimport)->getTable();
+
+        $first = reset($rows);
+
+        $columns = implode(
+            ',',
+            array_map(function ($value) {
+                return "$value";
+            }, array_keys($first))
+        );
+
+        $values = implode(',', array_map(function ($row) {
+            return '(' . implode(
+                ',',
+                array_map(function ($value) {
+                    return '"' . str_replace('"', '""', $value) . '"';
+                }, $row)
+            ) . ')';
+        }, $rows));
+
+        $updates = implode(
+            ',',
+            array_map(function ($value) {
+                return "$value = VALUES($value)";
+            }, array_keys($first))
+        );
+
+        $sql = "INSERT INTO {$table}({$columns}) VALUES {$values} ON DUPLICATE KEY UPDATE {$updates}";
+
+        return $sql;
+    }
+    
     /**
      * アップロードファイルのバリデート
      */
     private function validateUploadFile(Request $request) {
-        return \Validator::make($request->all(), [
+        return Validator::make($request->all(), [
                 'csv_file' => 'required|file|mimetypes:text/plain|mimes:csv,txt',
             ], [
                 'csv_file.required' => 'ファイルを選択してください',
