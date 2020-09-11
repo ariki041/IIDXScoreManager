@@ -14,7 +14,7 @@ class CreateMusicListsTable extends Migration
     public function up()
     {
         Schema::create('music_lists', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('music_id');
             $table->tinyInteger('version');
             $table->string('title');
             $table->string('csv_title');

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use App\Music;
+use App\MusicAttribute;
 use App\Csvimport;
 
 class CsvImportController extends Controller
@@ -25,8 +25,8 @@ class CsvImportController extends Controller
         $fp = fopen(storage_path('app/') . $tmp_csv_file, 'r');
 
 
-        // INNER JOIN `music_lists` ON `musics`.`music_id` = `music_lists`.`id`
-        $query = Music::query()->join('music_lists', 'musics.music_id', '=', 'music_lists.id');
+        // INNER JOIN `music_lists` ON `music_attributes`.`music_id` = `music_lists`.`music_id`
+        $query = MusicAttribute::query()->join('music_lists', 'music_attributes.music_id', '=', 'music_lists.music_id');
         $query->select('music_id', 'title', 'csv_title', 'difficulty');
         $music = $query->get()->toArray();
 

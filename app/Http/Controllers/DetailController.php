@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Music;
+use App\MusicAttribute;
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
 {
     public function index()
     {
-        $musics = Music::all();
+        $musics = MusicAttribute::all();
 
         return view('details/index', ['musics' => $musics]);
     }

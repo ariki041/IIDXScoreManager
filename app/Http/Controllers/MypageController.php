@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Music;
+use App\MusicAttribute;
 use App\MusicList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -28,8 +28,8 @@ class MypageController extends Controller
         $version = config('search.version');
         $difficulty = config('search.difficulty');
 
-        // INNER JOIN `music_lists` ON `musics`.`music_id` = `music_lists`.`id`
-        $query = Music::query()->join('music_lists', 'musics.music_id', '=', 'music_lists.id');
+        // INNER JOIN `music_lists` ON `music_attributes`.`music_id` = `music_lists`.`music_id`
+        $query = MusicAttribute::query()->join('music_lists', 'music_attributes.music_id', '=', 'music_lists.music_id');
 
         // レベル、バージョン WHERE句設定
         foreach($request->only(['level', 'version']) as $key => $value)
@@ -82,17 +82,17 @@ class MypageController extends Controller
             'dif_l' => $get_dif_l,
         );
 
-        $music = $query->select('music_id', 'title', 'genre', 'artist', 'difficulty')->paginate(30);
+        $music = $query->select('music_lists.music_id', 'title', 'genre', 'artist', 'difficulty')->paginate(30);
 
         return view('mypage/search', compact('music', 'level', 'version', 'difficulty', 'pagination_params'));
     }
 
     public function music(Request $request, $id) {
 
-        // INNER JOIN `music_lists` ON `musics`.`music_id` = `music_lists`.`id`
-        $query = Music::query()->join('music_lists', 'musics.music_id', '=', 'music_lists.id');
-        $query->where('musics.music_id', '=', $id);
-        $query->select('music_id', 'title', 'genre', 'artist', 'difficulty');
+        // INNER JOIN `music_lists` ON `music_attributes`.`music_id` = `music_lists`.`music_id`
+        $query = MusicAttribute::query()->join('music_lists', 'music_attributes.music_id', '=', 'music_lists.music_id');
+        $query->where('music_attributes.music_id', '=', $id);
+        $query->select('music_lists.music_id', 'title', 'genre', 'artist', 'difficulty');
         $music = $query->get()->toArray();
       
         return view('mypage/music', compact('music'));
